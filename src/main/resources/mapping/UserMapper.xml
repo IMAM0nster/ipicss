@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper>
-    
+<mapper namespace="ssm.dao.UserDao">
+    <resultMap id="UserBaseMap" type="ssm.entity.User">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="CHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="mobile" property="mobile" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="allergy" property="allergy" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <insert id="add" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user(type, username, password, mobile, email, allergy)
+        VALUES (#{type}, #{username}, #{password}, #{mobile}, #{email}, #{allergy})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM user
+        WHERE id = #{id}
+    </delete>
+<!--
+    <update id="update" parameterType="User">
+        UPDATE user
+        SET type = #{type}, username = #{username}, password = #{password}, mobile = #{mobile}, email = #{email}, allergy = #{allergy}
+    </update>
+ -->
+    <select id="getById" parameterType="java.lang.Long" resultMap="UserBaseMap">
+        SELECT * FROM user
+        WHERE id = #{id}
+    </select>
+
+    <select id="getAll" resultMap="UserBaseMap">
+        SELECT * FROM user
+    </select>
+
 </mapper>
