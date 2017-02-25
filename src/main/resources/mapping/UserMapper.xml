@@ -11,7 +11,7 @@
         <result column="allergy" property="allergy" jdbcType="BIGINT"/>
     </resultMap>
 
-    <insert id="add" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="add" parameterType="ssm.entity.User" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO user(type, username, password, mobile, email, allergy)
         VALUES (#{type}, #{username}, #{password}, #{mobile}, #{email}, #{allergy})
     </insert>
