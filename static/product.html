@@ -294,6 +294,8 @@ function changeNav(page)
 			document.getElementById("pf").innerHTML="<a href='javascript:gettingResult("+parseInt(-3+page)+")'>&laquo;</a>";
 			
 			if (2+page>=maximum){document.getElementById("pa").className="disabled"}
+			document.getElementById("pa").innerHTML="<a href='javascript:gettingResult("+parseInt(3+page)+")'>&raquo;</a>";
+
 			for(i=0;i<5;i++){
 				if ((i-2+page)<=maximum){
 					list[i].innerHTML="<a href='javascript:gettingResult("+parseInt(i-2+page)+")'>"+parseInt(i-2+page)+"</a>";
