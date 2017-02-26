@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.dao.MedicineDao">
+    <resultMap id="medicine" type="ssm.entity.Medicine">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="symptoms" property="symptoms" jdbcType="BIGINT"/>
+        <result column="ingredients" property="ingredients" jdbcType="BIGINT"/>
+        <result column="price" property="price" jdbcType="DECIMAL"/>
+    </resultMap>
+
+    <insert id="add" parameterType="ssm.entity.Medicine" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO medicine(name, symtoms, ingredients, price)
+        VALUES (#{name}, #{symptoms}, #{ingredients}, #{price})
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM medicine
+        WHERE id = #{id}
+    </delete>
+    <!--
+        <update id="update" parameterType="ssm.entity.Medicine">
+            UPDATE medicine
+            SET name = #{name}, symptoms = #{symptoms}, ingredients = #{ingredients}, price = #{price}}
+        </update>
+     -->
+    <select id="getById" parameterType="java.lang.Long" resultMap="medicine">
+        SELECT * FROM medicine
+        WHERE id = #{id}
+    </select>
+
+    <select id="getAll" resultMap="medicine">
+        SELECT * FROM medicine
+    </select>
+
+</mapper>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ssm.dao.UserDao">
-    <resultMap id="UserBaseMap" type="ssm.entity.User">
+    <resultMap id="user" type="ssm.entity.User">
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="username" property="username" jdbcType="VARCHAR"/>
         <result column="type" property="type" jdbcType="CHAR"/>
@@ -26,12 +26,12 @@
         SET type = #{type}, username = #{username}, password = #{password}, mobile = #{mobile}, email = #{email}, allergy = #{allergy}
     </update>
  -->
-    <select id="getById" parameterType="java.lang.Long" resultMap="UserBaseMap">
+    <select id="getById" parameterType="java.lang.Long" resultMap="user">
         SELECT * FROM user
         WHERE id = #{id}
     </select>
 
-    <select id="getAll" resultMap="UserBaseMap">
+    <select id="getAll" resultMap="user">
         SELECT * FROM user
     </select>
 
