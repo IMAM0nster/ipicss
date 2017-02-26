@@ -176,8 +176,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!--\\用来存储关键词和过敏信息的隐藏表单-->
 
-<script>
 
+
+
+<script>
 
 <!--自动排版-->
 
@@ -294,6 +296,7 @@ function changeNav(page)
 			document.getElementById("pf").innerHTML="<a href='javascript:gettingResult("+parseInt(-3+page)+")'>&laquo;</a>";
 			
 			if (2+page>=maximum){document.getElementById("pa").className="disabled"}
+			else{document.getElementById("pa").className=""}
 			document.getElementById("pa").innerHTML="<a href='javascript:gettingResult("+parseInt(3+page)+")'>&raquo;</a>";
 
 			for(i=0;i<5;i++){
