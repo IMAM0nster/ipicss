@@ -31,6 +31,16 @@
         WHERE id = #{id}
     </select>
 
+    <select id="getByEmail" parameterType="java.lang.String" resultMap="user">
+        SELECT  * FROM user
+        WHERE  email = #{email}
+    </select>
+
+    <select id="getByUsername" parameterType="java.lang.String" resultMap="user">
+        SELECT  * FROM user
+        WHERE username = #{username}
+    </select>
+
     <select id="getAll" resultMap="user">
         SELECT * FROM user
     </select>

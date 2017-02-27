@@ -7,7 +7,7 @@
 <script src="js/jquery.min.js"></script>
 <!-- Custom Theme files -->
 <!--theme-style-->
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />	
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -26,7 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<div class="header">
 		<div class="logo">
-			<a href="index.html"><img src="images/logo.png" alt="" ></a>
+			<a href="index.jsp"><img src="images/logo.png" alt="" ></a>
 		</div>
 		<div  class="header-top">
 			<div class="header-grid">
@@ -96,15 +96,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<form name="form1">
 				<div> 	
 				<span id="UN" >昵称</span>
-				<input type="text" name="UserName"   size="12" maxlength="12" onblur="UserName_onblur()"> 
+				<input type="text" name="username"   size="12" maxlength="12" onblur="UserName_onblur()">
 			</div>
 			<div> 	
 				<span id="EA">电子邮箱</span>
-				<input type="text" name="EmailAddress" onblur="EmailAddress_onblur()"> 
+				<input type="text" name="email" onblur="EmailAddress_onblur()">
 			</div>
 			<div> 
 			  <span id="P">密码</span>
-				<input type="password" name="Password"  size="12" maxlength="12">
+				<input type="password" name="password"  size="12" maxlength="12">
 			</div>		
             <div> 
 			  <span id="CP">确认密码</span>
@@ -221,11 +221,11 @@ function btnCheckForm_onclick()
 			document.all('CP').style.color="#b2b2b2";
 		}
 
-		if  (myForm.Password.value == "")
+		if  (myForm.password.value == "")
 		{
 			document.getElementById('P').innerText ="密码(不能为空！)";
 			document.all('P').style.color="#ff0000";
-			myForm.Password.focus();
+			myForm.password.focus();
 		}
 		else
 		{
@@ -233,11 +233,11 @@ function btnCheckForm_onclick()
 			document.all('P').style.color="#b2b2b2";
 		}
 
-		if  (myForm.EmailAddress.value == "")
+		if  (myForm.email.value == "")
 		{
 			document.getElementById('EA').innerText ="邮箱地址(不能为空！)";
 			document.all('EA').style.color="#ff0000";
-			myForm.EmailAddress.focus();
+			myForm.email.focus();
 		}
 		else
 		{
@@ -245,24 +245,24 @@ function btnCheckForm_onclick()
 			document.all('EA').style.color="#b2b2b2";
 		}
 
-		if  (myForm.UserName.value == "")
+		if  (myForm.username.value == "")
 		{
 			document.getElementById('UN').innerText ="用户名称(不能为空！)";
 			document.all('UN').style.color="#ff0000";
-			myForm.UserName.focus();
+			myForm.username.focus();
 		}
 		else
 		{
 			document.getElementById('UN').innerText ="用户名";
 			document.all('UN').style.color="#b2b2b2";
 		}
-	if (myForm.UserName.value == "" || myForm.EmailAddress.value == "" || myForm.Password.value == "" || myForm.ConfirmPassword.value == ""  )
+	if (myForm.username.value == "" || myForm.email.value == "" || myForm.password.value == "" || myForm.ConfirmPassword.value == ""  )
 	{
 		flag=0;
 	}
 	else
 	{
-		var Un = document.form1.UserName;
+		var Un = document.form1.username;
 		var myRegExp = /[a-zA-Z_0-9]{4,30}$/i;
 		if (myRegExp.test(Un.value)==false)
 		{
@@ -276,7 +276,7 @@ function btnCheckForm_onclick()
 			document.getElementById('UN').innerText ="用户名";
 			document.all('UN').style.color="#b2b2b2";
 		}
-		var EA = document.form1.EmailAddress
+		var EA = document.form1.email
 		var myRegExp = /^([^<>()\[\],;:@"\x00-\x20\x7F]|\\.)+@(([a-z]|#\d+?)([a-z0-9]|#\d+?)*([a-z0-9]|#\d+?)\.)+([a-z]{2,4})$/i;
 		if (myRegExp.test(EA.value)==false)
 		{
@@ -290,7 +290,7 @@ function btnCheckForm_onclick()
 			document.getElementById('EA').innerText ="邮箱地址";
 			document.all('EA').style.color="#b2b2b2";
 		}
-		var Pw = document.form1.Password;
+		var Pw = document.form1.password;
 		var myRegExp = /[a-zA-Z_0-9]{6,20}$/i;
 		if (myRegExp.test(Pw.value)==false)
 		{
@@ -305,7 +305,7 @@ function btnCheckForm_onclick()
 			document.all('P').style.color="#b2b2b2";
 		}
 		var FN = document.form1.ConfirmPassword;
-		var FN1 = document.form1.Password.value;
+		var FN1 = document.form1.password.value;
 		if (FN.value!=FN1)
 		{
 			document.getElementById('CP').innerText ="请再一次输入相同的密码";
@@ -333,11 +333,11 @@ function btnCheckForm_onclick()
 }}
 
 function  UserName_onblur(){
-    var username = document.form1.UserName.value;
+    var username = document.form1.username.value;
 	if (username)
 	{
 		document.getElementById('UN').innerText ="昵称（请稍等，正在检查）";
-		var url = "check?username="+username;
+		var url = "user/check?username="+username;
 		var request= new HttpRequest(url, handleChkRe);
 		request.send();
 		
@@ -345,11 +345,11 @@ function  UserName_onblur(){
 }
 
 function  EmailAddress_onblur(){
-    var emailaddress = document.form1.EmailAddress.value;
+    var emailaddress = document.form1.email.value;
 	if (emailaddress)
 	{
 		document.getElementById('EA').innerText ="电子邮箱（请稍等，正在检查）";
-		var url = "check?emailaddress="+emailaddress;
+		var url = "user/check?emailaddress="+emailaddress;
 		var request= new HttpRequest(url, handleChkRe);
 		request.send();
 		
@@ -358,6 +358,7 @@ function  EmailAddress_onblur(){
 
 function handleChkRe(responseJSON){
 	var response=JSON.parse(responseJSON);
+	alert(responseJSON);
 	if (response.id==1)
 	    {
 			if (response.avaliable)
@@ -386,7 +387,7 @@ function handleChkRe(responseJSON){
 function ConfirmPassword_onblur()
 {
 	var FN = document.form1.ConfirmPassword;
-	var FN1 = document.form1.Password.value;
+	var FN1 = document.form1.password.value;
 	if (FN.value!=FN1)
 	{
 		document.getElementById('CP').innerText ="请再一次输入相同的密码";

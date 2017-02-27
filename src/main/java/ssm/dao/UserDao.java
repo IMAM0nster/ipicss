@@ -20,5 +20,9 @@ public interface UserDao {
 
     public User getById(@Param("id") Long id);
 
+    public User getByEmail(@Param("email") String email);
+
+    public User getByUsername(@Param("username") String username);
+
     public List<User> getAll();
 }

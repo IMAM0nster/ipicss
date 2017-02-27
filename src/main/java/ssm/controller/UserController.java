@@ -22,6 +22,31 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @RequestMapping("/register")
+    public String userRegister(User user){
+        System.out.println("username: "+user.getUsername());
+        System.out.println("email: "+user.getEmail());
+        System.out.println("password"+user.getPassword());
+        user.setType('p');
+        try {
+            userService.add(user);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return "showResult";
+    }
+
+    @RequestMapping("/check")
+    public String checkUserName(String username){
+        User existingUser = userService.getByUsername(username);
+        if(existingUser == null){
+
+        }else{
+
+        }
+        return "showResult";
+    }
+
     @RequestMapping("/testAddUser")
     public String addUser(){ // pass test
 
