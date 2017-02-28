@@ -176,14 +176,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 <!--\\用来存储关键词和过敏信息的隐藏表单-->
 
-<script>
 
+
+
+<script>
 
 <!--自动排版-->
 
 window.sumofitem=0;
 window.currentCon=null;
 window.maxPage=1;
+window.currentPage=1;
 
 function createContainer(sum){
     var newContainer=document.createElement('div');
@@ -244,31 +247,42 @@ HttpRequest.prototype.send=function(){
 function pageComposing(responseText)
 {
 	var response=JSON.parse(responseText);
+
+
 	
 	window.maxPage=response.maxpage;
-	
-	for (each in response.results)
+
+    len = response.results.length;
+
+    results=response.results
+
+	for (i=0;i< len;i++)
 	{
-		appendItem(each.id,each.name,each.price,each.pic);
+		appendItem(results[i].id,results[i].name,results[i].price,results[i].pic);
 	}
+
+	changeNav(window.currentPage);
 }
 
 function changeNav(page)
 {
-    var paginator= getElementById(mainpaginator)
+    var paginator= document.getElementById('mainpaginator')
 	var maximum=window.maxPage;
 	var list=[document.getElementById("p1"),document.getElementById("p2"),document.getElementById("p3"),document.getElementById("p4"),document.getElementById("p5")]
-	
-	if (page<=maximun)
+
+	if (page<=maximum)
 	{
 		if(page<=3){
-			
             document.getElementById("pf").className="disabled";
-			document.getElementById("pa").className="";
-			document.getElementById("pa").innerHTML="<a href='javascript:gettingresult(6)'>&raquo;</a>";
-			
+
+            if (maximum>=6){
+			    document.getElementById("pa").className="";
+			    document.getElementById("pa").innerHTML="<a href='javascript:gettingResult(6)'>&raquo;</a>";
+			}else{
+			    document.getElementById("pa").className="disabled";}
+
 			for(i=0;i<5;i++){
-				if(i<=maximum){
+				if(i<=maximum-1){
 				    list[i].innerHTML="<a href='javascript:gettingResult("+parseInt(i+1)+")'>"+parseInt(i+1)+"</a>";
 			        list[i].className="";
 				}else{
@@ -276,12 +290,15 @@ function changeNav(page)
 					list[i].className="disabled";
 				}
 			}
-			list[page].className="active";
+			list[page-1].className="active";
 		}else{
 			document.getElementById("pf").className="";
-			document.getElementById("pf").innerHTML="<a href='javascript:gettingresult("+parseInt(-3+page)+")'>&laquo;</a>";
+			document.getElementById("pf").innerHTML="<a href='javascript:gettingResult("+parseInt(-3+page)+")'>&laquo;</a>";
 			
 			if (2+page>=maximum){document.getElementById("pa").className="disabled"}
+			else{document.getElementById("pa").className=""}
+			document.getElementById("pa").innerHTML="<a href='javascript:gettingResult("+parseInt(3+page)+")'>&raquo;</a>";
+
 			for(i=0;i<5;i++){
 				if ((i-2+page)<=maximum){
 					list[i].innerHTML="<a href='javascript:gettingResult("+parseInt(i-2+page)+")'>"+parseInt(i-2+page)+"</a>";
@@ -301,15 +318,15 @@ function changeNav(page)
 
 function gettingResult(page)
 {
+    window.currentPage=page;
+
 	document.getElementById("itemContainer").innerHTML="";
+
+	var request =new HttpRequest("/search?keyword="+(document.getElementById("keyword"))+"&forbiddenword="+(document.getElementById("forbiddenword"))+"&page="+page,pageComposing);
+	
+	request.send();
 	
 
-	
-	var response = HttpRequest("/search?keyword="+(document.getElementById("keyword"))+"&forbiddenword="+(document.getElementById("forbiddenword"))+"&page="+page,pageComposing);
-	
-	response.send();
-	
-    changeNav(page);
 }
 
 gettingResult(1);
