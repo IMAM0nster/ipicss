@@ -32,4 +32,8 @@ public class MedicineServiceImpl implements MedicineService{
     public List<Medicine> getAll() {
         return medicineDao.getAll();
     }
+
+    public List<Medicine> findSuitableMedicines(String keyword, String forbidden, Integer page) {
+        return medicineDao.findSuitable(keyword, forbidden, page);
+    }
 }

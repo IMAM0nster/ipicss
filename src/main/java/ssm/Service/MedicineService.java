@@ -12,4 +12,5 @@ public interface MedicineService {
     int deleteById(Long id);
     Medicine getById(Long id);
     List<Medicine> getAll();
+    List<Medicine> findSuitableMedicines(String keyword, String forbidden, Integer page);
 }

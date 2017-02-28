@@ -4,12 +4,12 @@
 <html>
 <head>
 	<title>搜索结果</title>
-	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="/js/jquery.min.js"></script>
+	<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
 	<!-- Custom Theme files -->
 	<!--theme-style-->
-	<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!--//theme-style-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,7 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <div class="header">
 	<div class="logo">
-		<a href="index.html"><img src="/images/logo.png" alt="" ></a>
+		<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" alt="" ></a>
 	</div>
 	<div  class="header-top">
 		<div class="header-grid">
@@ -42,8 +42,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 			<!-- search-scripts -->
-			<script src="/js/classie.js"></script>
-			<script src="/js/uisearch.js"></script>
+			<script src="${pageContext.request.contextPath}/js/classie.js"></script>
+			<script src="${pageContext.request.contextPath}/js/uisearch.js"></script>
 			<script>
 				new UISearch( document.getElementById( 'sb-search' ) );
 			</script>
@@ -64,11 +64,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<ul>
 							<li><a href="contact.html">联系我们</a></li>
 							<li><a href="account.html">我的账号</a></li>
-							<li><a href="/register.html">注册</a></li>
+							<li><a href="${pageContext.request.contextPath}/register.html">注册</a></li>
 						</ul>
 					</li>
 				</ul>
-				<script type="text/javascript" src="/js/nav.js"></script>
+				<script type="text/javascript" src="${pageContext.request.contextPath}/js/nav.js"></script>
 			</div><!-- end h_menu4 -->
 			<ul class="header-bottom-in">
 				<li ><select class="drop">
@@ -171,9 +171,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--用来存储关键词和过敏信息的隐藏表单-->
 
 <form>
-	<input type="text" hidden="true" name="keyword" id="keyword"/>
-	<input type="text" hidden="true" name="forbidden" id="forbidden"/>
-	<input type="text" hidden="true" name="currentpage" id="currentpage"/>
+	<input type="text" hidden="true" name="keyword" id="keyword" value="${keyword}"/>
+	<input type="text" hidden="true" name="forbidden" id="forbidden" value="${forbidden}"/>
+	<input type="text" hidden="true" name="currentpage" id="currentpage" value="${currentpage}"/>
 </form>
 
 <!--\\用来存储关键词和过敏信息的隐藏表单-->
@@ -324,7 +324,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		document.getElementById("itemContainer").innerHTML="";
 
-		var request =new HttpRequest("/search?keyword="+(document.getElementById("keyword"))+"&forbiddenword="+(document.getElementById("forbiddenword"))+"&page="+page,pageComposing);
+		var request =new HttpRequest("search?keyword="+(document.getElementById("keyword"))+"&forbiddenword="+(document.getElementById("forbiddenword"))+"&page="+page,pageComposing);
 
 		request.send();
 

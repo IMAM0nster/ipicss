@@ -33,4 +33,12 @@
         SELECT * FROM medicine
     </select>
 
+
+    <!--
+        WJJ TO DO
+    -->
+    <select id="findSuitable" resultMap="medicine">
+        SELECT * FROM medicine
+    </select>
+
 </mapper>

@@ -33,7 +33,7 @@
   </div>
   <div class="header">
     <div class="logo">
-      <a href="index.html"><img src="images/logo.png" alt="" ></a>
+      <a href="index.jsp"><img src="images/logo.png" alt="" ></a>
     </div>
     <div  class="header-top">
       <div class="header-grid">
@@ -42,9 +42,9 @@
         </ul>
         <div class="search-box">
           <div id="sb-search" class="sb-search">
-            <form>
+            <form action="medicine/initProductPage" method="PUT">
               <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-              <input class="sb-search-submit" type="submit" value="" method="PUT" action="/search/">
+              <input class="sb-search-submit" type="submit">
               <span class="sb-icon-search"> </span>
             </form>
           </div>
@@ -117,15 +117,15 @@
             <div class="callbacks_container">
               <ul class="rslides" id="slider">
                 <li>
-                  <a herf='index.html'><img src="images/vi.jpg" alt=""></a>
+                  <a herf='index.jsp'><img src="images/vi.jpg" alt=""></a>
 
                 </li>
                 <li>
-                  <a herf='index.html'><img src="images/v2.jpg" alt=""></a>
+                  <a herf='index.jsp'><img src="images/v2.jpg" alt=""></a>
 
                 </li>
                 <li>
-                  <a herf='index.html'><img src="images/vi.jpg" alt=""></a>
+                  <a herf='index.jsp'><img src="images/vi.jpg" alt=""></a>
 
                 </li>
               </ul>
@@ -142,7 +142,7 @@
           <h4>最新文章</h4>
           <div class="news">
             <span>17/2/22</span>
-            <p><a herf="index.html" >雨水节气来临 </a></p>
+            <p><a herf="index.jsp" >雨水节气来临 </a></p>
             <div class="foot">
               <label></label>
               <ul class="eye ">
@@ -154,7 +154,7 @@
           </div>
           <div class="news">
             <span>17/2/21</span>
-            <p><a herf='index.html' >春天要吃柠檬！ </a></p>
+            <p><a herf='index.jsp' >春天要吃柠檬！ </a></p>
             <div class="foot">
               <label></label>
               <ul class="eye ">
@@ -166,7 +166,7 @@
           </div>
           <div class="news">
             <span>17/2/19</span>
-            <a herf='index.html'><p>养生讲座！ </p></a>
+            <a herf='index.jsp'><p>养生讲座！ </p></a>
             <div class="foot">
               <label></label>
               <ul class="eye ">

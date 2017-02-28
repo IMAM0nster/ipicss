@@ -20,4 +20,6 @@ public interface MedicineDao {
     public Medicine getById(@Param("id") Long id);
 
     public List<Medicine> getAll();
+
+    public List<Medicine> findSuitable(@Param("keyword") String keyword, @Param("forbidden") String forbidden, @Param("page") Integer page);
 }
