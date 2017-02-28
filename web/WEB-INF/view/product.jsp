@@ -4,12 +4,12 @@
 <html>
 	<head>
 	<title>搜索结果</title>
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-	<script src="js/jquery.min.js"></script>
+	<script src="/js/jquery.min.js"></script>
 	<!-- Custom Theme files -->
 	<!--theme-style-->
-	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!--//theme-style-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -25,7 +25,7 @@
 		</div>
 		<div class="header">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" alt="" ></a>
+				<a href="index.html"><img src="/images/logo.png" alt="" ></a>
 			</div>
 			<div  class="header-top">
 				<div class="header-grid">
@@ -42,8 +42,8 @@
 							</div>
 						</div>
 						<!-- search-scripts -->
-						<script src="js/classie.js"></script>
-						<script src="js/uisearch.js"></script>
+						<script src="/js/classie.js"></script>
+						<script src="/js/uisearch.js"></script>
 							<script>
 								new UISearch( document.getElementById( 'sb-search' ) );
 							</script>
@@ -68,7 +68,7 @@
 							</ul>
 						</li>
 					</ul>
-					<script type="text/javascript" src="js/nav.js"></script>
+					<script type="text/javascript" src="/js/nav.js"></script>
 				</div><!-- end h_menu4 -->
 						<ul class="header-bottom-in">
 							<li ><select class="drop">
@@ -218,7 +218,7 @@
 			window.sumofitem+=1;
 	}
 
-	<!--//自动排版 -->
+	<!--自动排版 -->
 
 	<!--AJAX-->
 
@@ -316,7 +316,7 @@
 
 	gettingResult(1);
 
-	<!--//AJAX-->
+	<!--AJAX-->
 
 	</script>
 	</body>

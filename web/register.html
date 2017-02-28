@@ -93,7 +93,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<div class="register">
 		<h2>用户注册</h2>		
 		<div class=" register-top">
-			<form name="form1">
+			<form name="form1" action="user/register" method="post">
 				<div> 	
 				<span id="UN" >昵称</span>
 				<input type="text" name="username"   size="12" maxlength="12" onblur="UserName_onblur()">
@@ -358,7 +358,6 @@ function  EmailAddress_onblur(){
 
 function handleChkRe(responseJSON){
 	var response=JSON.parse(responseJSON);
-	alert(responseJSON);
 	if (response.id==1)
 	    {
 			if (response.avaliable)
@@ -370,7 +369,7 @@ function handleChkRe(responseJSON){
 				document.getElementById('UN').innerText ="昵称（已被占用）";
 				document.getElementById('UN').style.color="#ff0000";}
 		}
-	elif (response.id==2)
+	if (response.id==2)
 	    {
 			if(response.avaliable)
 			{

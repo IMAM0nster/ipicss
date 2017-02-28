@@ -13,14 +13,7 @@
     <title>Result Page</title>
 </head>
 <body>
-    <h1>this is the result of get all user</h1>
-    <c:if test="${!empty userList}">
-        <c:forEach var="user" items="${userList}">
-            姓名：${user.username} &nbsp;&nbsp;手机号：${user.mobile} &nbsp;&nbsp;邮箱：${user.email} &nbsp;&nbsp;<br>
-        </c:forEach>
-    </c:if>
-
-    <h1>this is the information of user whose id is 1</h1>
+    <h1>this is the information of newly register user</h1>
     <c:if test="${!empty user}">
         姓名：${user.username} &nbsp;&nbsp;手机号：${user.mobile} &nbsp;&nbsp;邮箱：${user.email} &nbsp;&nbsp;<br>
     </c:if>
