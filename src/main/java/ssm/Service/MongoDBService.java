@@ -1,9 +1,4 @@
-package ssm.dao;
-
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
-import org.springframework.stereotype.Repository;
+package ssm.Service;
 
 import java.io.File;
 import java.io.InputStream;
@@ -11,11 +6,7 @@ import java.io.InputStream;
 /**
  * Created by fyyzyh on 2017/3/1.
  */
-@Repository
-public interface MongoDBDao {
-    MongoDatabase getDatabase(String name);
-    MongoCollection<Document> getCollection(String dbName, String collectionName);
-
+public interface MongoDBService {
     void insertContent(String dbName, String collectionName, Object key, String content);
     String getContent(String dbName, String collectionName, Object key);
     void insertFile(String dbName, String bucketName, String fileName, File file);

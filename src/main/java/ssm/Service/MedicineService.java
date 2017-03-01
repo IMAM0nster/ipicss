@@ -2,6 +2,7 @@ package ssm.Service;
 
 import ssm.entity.Medicine;
 
+import java.io.InputStream;
 import java.util.List;
 
 /**
@@ -13,4 +14,5 @@ public interface MedicineService {
     Medicine getById(Long id);
     List<Medicine> getAll();
     List<Medicine> findSuitableMedicines(String keyword, String forbidden, Integer page);
+    InputStream getImg(Long id);
 }
