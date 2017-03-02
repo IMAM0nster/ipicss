@@ -3,7 +3,6 @@ package ssm.Service;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ssm.dao.MedicineDao;
-import ssm.dao.MongoDBDao;
 import ssm.entity.Medicine;
 
 import javax.annotation.Resource;

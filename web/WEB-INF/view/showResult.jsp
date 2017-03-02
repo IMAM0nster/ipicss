@@ -13,10 +13,8 @@
     <title>Result Page</title>
 </head>
 <body>
-    <h1>this is the information of newly register user</h1>
-    <c:if test="${!empty user}">
-        姓名：${user.username} &nbsp;&nbsp;手机号：${user.mobile} &nbsp;&nbsp;邮箱：${user.email} &nbsp;&nbsp;<br>
-    </c:if>
+    <!-- this file is used for test-->
+    <img src="/ipicss/test/getPic">
 
 </body>
 </html>
