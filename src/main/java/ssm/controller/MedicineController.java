@@ -9,11 +9,6 @@ import ssm.entity.Medicine;
 
 import javax.annotation.Resource;
 import javax.jws.WebParam;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.List;
 
 /**
@@ -45,21 +40,5 @@ public class MedicineController {
         return suitableMedicines;
     }
 
-    @RequestMapping("getImg")
-    public void getImg(Long medicineId, HttpServletResponse response) throws IOException {
-        InputStream inputStream = medicineService.getImg(medicineId);
-        response.setContentType("image/jpg");
-        if(inputStream!=null){
-            OutputStream outputStream = response.getOutputStream();
-            byte[] data = new byte[1024];
-            while(inputStream.read(data) != -1){
-                outputStream.write(data);
-            }
-            inputStream.close();
-            outputStream.flush();
-            outputStream.close();
-        }
-
-    }
 
 }

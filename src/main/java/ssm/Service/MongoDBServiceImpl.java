@@ -1,5 +1,7 @@
 package ssm.Service;
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ssm.dao.MongoDBDao;
 
 import javax.annotation.Resource;
@@ -9,6 +11,8 @@ import java.io.InputStream;
 /**
  * Created by fyyzyh on 2017/3/1.
  */
+@Service
+@Transactional(rollbackFor = Exception.class)
 public class MongoDBServiceImpl implements MongoDBService {
     @Resource
     private MongoDBDao mongoDBDao;

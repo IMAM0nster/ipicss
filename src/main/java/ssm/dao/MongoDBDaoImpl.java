@@ -12,6 +12,7 @@ import com.mongodb.client.gridfs.model.GridFSFile;
 import com.mongodb.client.gridfs.model.GridFSUploadOptions;
 import org.bson.Document;
 import org.bson.types.ObjectId;
+import org.springframework.stereotype.Repository;
 
 import javax.print.Doc;
 import java.io.File;
@@ -23,6 +24,7 @@ import static com.mongodb.client.model.Filters.eq;
 /**
  * Created by fyyzyh on 2017/3/1.
  */
+@Repository
 public class MongoDBDaoImpl implements MongoDBDao{
     private MongoClient mongoClient = null;
 

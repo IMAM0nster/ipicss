@@ -11,7 +11,7 @@ import java.io.InputStream;
 /**
  * Created by fyyzyh on 2017/3/1.
  */
-@Repository
+
 public interface MongoDBDao {
     MongoDatabase getDatabase(String name);
     MongoCollection<Document> getCollection(String dbName, String collectionName);
