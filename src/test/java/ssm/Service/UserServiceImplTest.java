@@ -22,8 +22,6 @@ public class UserServiceImplTest {
 
     @Autowired
     UserService userService;
-//    @Resource
-//    private UserServiceImpl userService = null;
 
     @Test
     public void add() throws Exception {

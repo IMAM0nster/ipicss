@@ -19,7 +19,11 @@ public interface MedicineDao {
 
     public Medicine getById(@Param("id") Long id);
 
+    public List<Medicine> getSome(@Param("offset") Integer offset, @Param("size") Integer size);
+
     public List<Medicine> getAll();
 
-    public List<Medicine> findSuitable(@Param("keyword") String keyword, @Param("forbidden") String forbidden, @Param("page") Integer page);
+    Integer countSuitable(@Param("keyword") String keyword, @Param("forbidden") String forbidden);
+
+    public List<Medicine> findSuitable(@Param("keyword") String keyword, @Param("forbidden") String forbidden, @Param("offset") Integer offset, @Param("size") Integer size);
 }

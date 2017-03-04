@@ -9,7 +9,10 @@ import ssm.entity.Medicine;
 
 import javax.annotation.Resource;
 import javax.jws.WebParam;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by fy on 2017/2/28.
@@ -30,16 +33,31 @@ public class MedicineController {
         return "product";
     }
 
+//    return json: {maxpage:23, result:[{id:1, name:"a", price:1.00, pic:"http://..."}]}
     @ResponseBody
     @RequestMapping("search")
-    public List<Medicine> findSuitableMedicines(String keyword, String forbidden, Integer page, Model model){
-        List<Medicine> suitableMedicines = medicineService.findSuitableMedicines(keyword, forbidden, page);
-        model.addAttribute("keyword", keyword);
-        model.addAttribute("forbidden", forbidden);
-        model.addAttribute("currentpage", page);
-        return suitableMedicines;
+    public Map<String , Object> findSuitableMedicines(String keyword, String forbidden, Integer page){
+        Integer pageSize = 20;
+        Map<String, Object> responseJSON = new HashMap<String, Object>();
+        Map<String, Object> item = new HashMap<String, Object>();
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+
+        Integer numOfMatch = medicineService.countSuitableMedicines(keyword, forbidden);
+        if (numOfMatch == 0) {
+            responseJSON.put("maxpage", 0);
+            return responseJSON;
+        }
+        List<Medicine> medicineList = medicineService.findSuitableMedicines(keyword, forbidden, page, pageSize);
+        for (Medicine medicine : medicineList) {
+            item.clear();
+            item.put("id", medicine.getId());
+            item.put("name", medicine.getName());
+            item.put("price", medicine.getPrice());
+            item.put("pic", "https://static.mengniang.org/common/thumb/7/77/Richang_02.JPG/250px-Richang_02.JPG"); // nichijo xD
+            result.add(item);
+        }
+        responseJSON.put("result", result);
+
+        return responseJSON;
     }
-
-
-
 }

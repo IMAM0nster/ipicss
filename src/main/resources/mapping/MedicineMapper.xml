@@ -33,12 +33,24 @@
         SELECT * FROM medicine
     </select>
 
+    <!--TODO: It will be slow when offset is big...(due to LIMIT)-->
+    <select id="getSome" resultMap="medicine">
+        SELECT * FROM medicine LIMIT #{offset},#{size}
+    </select>
 
-    <!--
-        WJJ TO DO
-    -->
+    <!--TODO: check forbidden--><!-- ... AND NOT LIKE CONCAT('%', #{keyword}, '%') ... -->
+    <select id="countSuitable" resultType="int">
+        SELECT COUNT(*) FROM medicine
+        WHERE name LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+
+    <!--TODO: check forbidden--><!-- ... AND NOT LIKE CONCAT('%', #{keyword}, '%') ... -->
+    <!--SELECT * FROM medicine WHERE TRUE-->
+    <!--<if test="name!=null"> AND name LIKE #{name}</if>-->
     <select id="findSuitable" resultMap="medicine">
         SELECT * FROM medicine
+        WHERE name LIKE CONCAT('%', #{keyword}, '%')
+        LIMIT #{offset},#{size}
     </select>
 
 </mapper>

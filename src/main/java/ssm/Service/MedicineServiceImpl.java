@@ -33,12 +33,20 @@ public class MedicineServiceImpl implements MedicineService{
         return medicineDao.getById(id);
     }
 
+    public List<Medicine> getSome(Integer page, Integer size) {
+        return medicineDao.getSome((page-1)*size, size);
+    }
+
     public List<Medicine> getAll() {
         return medicineDao.getAll();
     }
 
-    public List<Medicine> findSuitableMedicines(String keyword, String forbidden, Integer page) {
-        return medicineDao.findSuitable(keyword, forbidden, page);
+    public Integer countSuitableMedicines(String keyword, String forbidden) {
+        return medicineDao.countSuitable(keyword, forbidden);
+    }
+
+    public List<Medicine> findSuitableMedicines(String keyword, String forbidden, Integer page, Integer size) {
+        return medicineDao.findSuitable(keyword, forbidden, (page-1)*size, size);
     }
 
     public InputStream getImg(Long id) {
