@@ -250,7 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	{
 		var response=JSON.parse(responseText);
 
-
+        console.log(response)
 
 		window.maxPage=response.maxpage;
 

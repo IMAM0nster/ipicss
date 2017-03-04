@@ -40,13 +40,14 @@ public class MedicineController {
         Integer pageSize = 20;
         Map<String, Object> responseJSON = new HashMap<String, Object>();
         Map<String, Object> item = new HashMap<String, Object>();
-        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
 
         Integer numOfMatch = medicineService.countSuitableMedicines(keyword, forbidden);
         if (numOfMatch == 0) {
             responseJSON.put("maxpage", 0);
             return responseJSON;
         }
+
         List<Medicine> medicineList = medicineService.findSuitableMedicines(keyword, forbidden, page, pageSize);
         for (Medicine medicine : medicineList) {
             item.clear();
@@ -54,9 +55,10 @@ public class MedicineController {
             item.put("name", medicine.getName());
             item.put("price", medicine.getPrice());
             item.put("pic", "https://static.mengniang.org/common/thumb/7/77/Richang_02.JPG/250px-Richang_02.JPG"); // nichijo xD
-            result.add(item);
+            results.add(item);
         }
-        responseJSON.put("result", result);
+        responseJSON.put("maxpage", numOfMatch/pageSize);
+        responseJSON.put("results", results);
 
         return responseJSON;
     }
