@@ -23,10 +23,12 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="IPICISS" />
+        <module name="IPICSS" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="IPICISS" target="1.5" />
+      <module name="IPICSS" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>

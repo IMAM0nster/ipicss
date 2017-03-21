@@ -20,22 +20,6 @@ public class TestController {
     @Resource
     private MongoDBService mongoDBService;
 
-    @RequestMapping("getPic")
-    public void testMongoDBGetPic(HttpServletResponse response){
-        InputStream inputStream = mongoDBService.getFileStream("gridfs", "fs", "test.jpg");
-        response.setContentType("img/jpg");
-        try {
-            OutputStream outputStream = response.getOutputStream();
-            int len = 0;
-            byte[] buf = new byte[1024];
-            while((len = inputStream.read(buf, 0, 1024))!=-1){
-                outputStream.write(buf, 0, len);
-            }
-            outputStream.close();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
 }
 
 
