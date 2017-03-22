@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
@@ -229,6 +229,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			{
 				this.request=new XMLHttpRequest();
 				this.request.open("GET",url);
+				this.request.setRequestHeader("Content-Type", "text/html;charset=UTF-8");
 
 				var tempRequest=this.request;
 
@@ -323,8 +324,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		window.currentPage=page;
 
 		document.getElementById("itemContainer").innerHTML="";
-
-		var request =new HttpRequest("search?keyword="+(document.getElementById("keyword"))+"&forbiddenword="+(document.getElementById("forbiddenword"))+"&page="+page,pageComposing);
+		var request =new HttpRequest("search?keyword="+(encodeURI(encodeURI(document.getElementById("keyword").value)))+"&forbidden="+(document.getElementById("forbidden").value)+"&page="+page,pageComposing);
 
 		request.send();
 

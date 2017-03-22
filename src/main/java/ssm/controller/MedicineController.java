@@ -3,12 +3,16 @@ package ssm.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ssm.Service.MedicineService;
 import ssm.entity.Medicine;
 
 import javax.annotation.Resource;
 import javax.jws.WebParam;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,22 +39,22 @@ public class MedicineController {
 
 //    return json: {maxpage:23, result:[{id:1, name:"a", price:1.00, pic:"http://..."}]}
     @ResponseBody
-    @RequestMapping("search")
-    public Map<String , Object> findSuitableMedicines(String keyword, String forbidden, Integer page){
+    @RequestMapping(value = "search")
+    public Map<String , Object> findSuitableMedicines(String keyword, String forbidden, Integer page) throws UnsupportedEncodingException {
+        String keyword_dec = URLDecoder.decode(keyword,"utf-8");
         Integer pageSize = 20;
         Map<String, Object> responseJSON = new HashMap<String, Object>();
-        Map<String, Object> item = new HashMap<String, Object>();
         List<Map<String, Object>> results = new ArrayList<Map<String, Object>>();
 
-        Integer numOfMatch = medicineService.countSuitableMedicines(keyword, forbidden);
+        Integer numOfMatch = medicineService.countSuitableMedicines(keyword_dec, forbidden);
         if (numOfMatch == 0) {
             responseJSON.put("maxpage", 0);
             return responseJSON;
         }
 
-        List<Medicine> medicineList = medicineService.findSuitableMedicines(keyword, forbidden, page, pageSize);
+        List<Medicine> medicineList = medicineService.findSuitableMedicines(keyword_dec, forbidden, page, pageSize);
         for (Medicine medicine : medicineList) {
-            item.clear();
+            Map<String, Object> item = new HashMap<String, Object>();
             item.put("id", medicine.getId());
             item.put("name", medicine.getName());
             item.put("price", medicine.getPrice());

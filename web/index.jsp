@@ -5,7 +5,7 @@
   Time: 21:38
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
     <title>Home</title>
@@ -42,7 +42,7 @@
         </ul>
         <div class="search-box">
           <div id="sb-search" class="sb-search">
-            <form action="medicine/initProductPage" method="PUT">
+            <form action="medicine/initProductPage" method="POST">
               <input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
               <input class="sb-search-submit" type="submit">
               <span class="sb-icon-search"> </span>

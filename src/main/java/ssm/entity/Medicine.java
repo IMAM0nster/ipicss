@@ -6,8 +6,8 @@ package ssm.entity;
 public class Medicine {
     private Long id;
     private String name;
-    private Long symptoms;
-    private Long ingredients;
+    private String symptoms;
+    private String ingredients;
     private Float price;
 
     public Long getId() {
@@ -22,16 +22,16 @@ public class Medicine {
     public void setName(String name) {
         this.name = name;
     }
-    public Long getSymptoms() {
+    public String getSymptoms() {
         return symptoms;
     }
-    public void setSymptoms(Long symptoms) {
+    public void setSymptoms(String symptoms) {
         this.symptoms = symptoms;
     }
-    public Long getIngredients() {
+    public String getIngredients() {
         return ingredients;
     }
-    public void setIngredients(Long ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
     public Float getPrice() {
