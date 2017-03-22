@@ -3,9 +3,9 @@ package ssm.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ssm.Service.MedicineService;
+import ssm.Service.MongoDBService;
 import ssm.entity.Medicine;
 
 import javax.annotation.Resource;
@@ -28,6 +28,9 @@ public class MedicineController {
     @Resource
     private MedicineService medicineService;
 
+    @Resource
+    private MongoDBService mongoDBService;
+
     @RequestMapping("initProductPage")
     public String InitProductPage(String search, Model model){
         System.out.println("going to search "+search);
@@ -35,6 +38,23 @@ public class MedicineController {
         model.addAttribute("forbidden", null);
         model.addAttribute("currentpage", 1);
         return "product";
+    }
+
+    @RequestMapping("getPic")
+    public void testMongoDBGetPic(HttpServletResponse response, Long id){
+        InputStream inputStream = mongoDBService.getFileStream("ipicss", "medicinePic", id.toString());
+        response.setContentType("img/jpg");
+        try {
+            OutputStream outputStream = response.getOutputStream();
+            int len = 0;
+            byte[] buf = new byte[1024];
+            while((len = inputStream.read(buf, 0, 1024))!=-1){
+                outputStream.write(buf, 0, len);
+            }
+            outputStream.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
 //    return json: {maxpage:23, result:[{id:1, name:"a", price:1.00, pic:"http://..."}]}
@@ -58,7 +78,7 @@ public class MedicineController {
             item.put("id", medicine.getId());
             item.put("name", medicine.getName());
             item.put("price", medicine.getPrice());
-            item.put("pic", "https://static.mengniang.org/common/thumb/7/77/Richang_02.JPG/250px-Richang_02.JPG"); // nichijo xD
+            item.put("pic", "https://localhost:8080/ipicss/medicine/getPic?id="+medicine.getId()); // nichijo xD
             results.add(item);
         }
         responseJSON.put("maxpage", numOfMatch/pageSize);

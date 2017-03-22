@@ -10,9 +10,12 @@ import java.io.File;
 public class Test {
     public static void main(String[] args) {
         MongoDBService mongoDB = new MongoDBServiceImpl();
-        File file = new File("D:\\test.jpg");
-        if(file != null){
-            mongoDB.insertFile("gridfs", "fs", file.getName(), file);
+        File file = new File("D:\\medPic");
+        if(file.exists()){
+            File[] files = file.listFiles();
+            for(File pic:files){
+                mongoDB.insertFile("ipicss", "medPic", pic.getName(), pic);
+            }
         }
         return;
     }
