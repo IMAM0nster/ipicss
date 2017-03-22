@@ -34,9 +34,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</ul>
 			<div class="search-box">
 				<div id="sb-search" class="sb-search">
-					<form>
+					<form action="medicine/initProductPage" method="POST">
 						<input class="sb-search-input" placeholder="Enter your search term..." type="search" name="search" id="search">
-						<input class="sb-search-submit" type="submit" value="" method="PUT" action="/search/">
+						<input class="sb-search-submit" type="submit">
 						<span class="sb-icon-search"> </span>
 					</form>
 				</div>
